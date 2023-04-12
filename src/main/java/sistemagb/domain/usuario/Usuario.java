@@ -3,6 +3,8 @@ package sistemagb.domain.usuario;
 import java.util.Collection;
 import java.util.List;
 
+import javax.management.relation.Role;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +13,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,12 +39,24 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
     private String email;
+    private Boolean ativo;
     
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
+    
+   
+    @ManyToMany 
+    @JoinTable( 
+        name = "usuarios_roles", 
+        joinColumns = @JoinColumn(
+          name = "usuario_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "id")) 
+    private Collection<Role> roles;
+
     
     
 
