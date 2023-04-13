@@ -1,9 +1,9 @@
 package sistemagb.domain.usuario;
 
 import java.util.Collection;
-import java.util.List;
-
-import javax.management.relation.Role;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +22,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sistemagb.domain.role.Role;
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
@@ -35,19 +36,13 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String username;
     private String login;
-    private String senha;
+    private String password;
     private String email;
     private Boolean ativo;
     
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
-    }
     
-   
     @ManyToMany 
     @JoinTable( 
         name = "usuarios_roles", 
@@ -55,19 +50,12 @@ public class Usuario implements UserDetails {
           name = "usuario_id", referencedColumnName = "id"), 
         inverseJoinColumns = @JoinColumn(
           name = "role_id", referencedColumnName = "id")) 
-    private Collection<Role> roles;
-
-    
+    private Set<Role> roles = new HashSet<>();
     
 
     @Override
-    public String getPassword() {
-        return senha;
-    }
-
-    @Override
-    public String getUsername() {
-        return login;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNome())).collect(Collectors.toList());
     }
 
     @Override
