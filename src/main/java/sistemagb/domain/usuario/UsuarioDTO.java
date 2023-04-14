@@ -21,4 +21,14 @@ public class UsuarioDTO {
     
     private Set<Role> roles;
 
+	public UsuarioDTO(Long id, String username, String nome, String email, Boolean ativo) {
+		this.id = id;
+		this.username = username;
+		this.nome = nome;
+		this.email = email;
+		this.ativo = ativo;
+	}
+    
+    
+
 }

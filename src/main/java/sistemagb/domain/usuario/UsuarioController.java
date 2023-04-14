@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.annotation.security.RolesAllowed;
@@ -32,9 +33,13 @@ public class UsuarioController {
 	
 	@GetMapping
 	@RolesAllowed({"ROLE_ADMIN"})
-	public List<UsuarioDTO> listar(){
-		return usuarioRepository.buscarUsuarios();
+	public List<UsuarioDTO> listar(@RequestParam(required = false) String username,
+			@RequestParam(required = false) String nome,
+			@RequestParam(required = false) String email,
+			@RequestParam(required = false) Boolean ativo){
+		return usuarioRepository.buscarUsuarios(username, nome, email, ativo);
 	}
+	
 	
 	@GetMapping(path = "/{username}")
 	@RolesAllowed({"ROLE_ADMIN"})
