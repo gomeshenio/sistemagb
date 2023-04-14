@@ -1,4 +1,4 @@
-package sistemagb.infra.security;
+package sistemagb.jwt.security;
 
 import java.util.Collection;
 

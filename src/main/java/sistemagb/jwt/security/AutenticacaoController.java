@@ -1,4 +1,4 @@
-package sistemagb.controller;
+package sistemagb.jwt.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import sistemagb.domain.usuario.DadosAutenticacao;
-import sistemagb.domain.usuario.Usuario;
-import sistemagb.domain.usuario.UsuarioRepository;
-import sistemagb.infra.security.DadosTokenJWT;
-import sistemagb.infra.security.TokenService;
+import sistemagb.jwt.usuario.DadosAutenticacao;
+import sistemagb.jwt.usuario.Usuario;
+import sistemagb.jwt.usuario.UsuarioRepository;
 
 @RestController
 @RequestMapping("/login")

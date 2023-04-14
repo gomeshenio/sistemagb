@@ -1,4 +1,4 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,4 +1,4 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 public record DadosAutenticacao(String username, String password) {
 }

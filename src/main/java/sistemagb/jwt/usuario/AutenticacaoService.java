@@ -1,4 +1,4 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

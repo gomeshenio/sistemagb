@@ -1,4 +1,4 @@
-package sistemagb.infra.security;
+package sistemagb.jwt.security;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sistemagb.domain.usuario.UsuarioRepository;
+import sistemagb.jwt.usuario.UsuarioRepository;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {

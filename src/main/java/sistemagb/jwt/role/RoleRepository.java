@@ -1,4 +1,4 @@
-package sistemagb.domain.role;
+package sistemagb.jwt.role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

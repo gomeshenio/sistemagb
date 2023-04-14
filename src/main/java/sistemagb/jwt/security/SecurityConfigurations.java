@@ -1,4 +1,4 @@
-package sistemagb.infra.security;
+package sistemagb.jwt.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

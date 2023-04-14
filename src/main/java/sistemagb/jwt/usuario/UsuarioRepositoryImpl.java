@@ -1,4 +1,4 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
-import sistemagb.domain.role.Role;
+import sistemagb.jwt.role.Role;
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
 	

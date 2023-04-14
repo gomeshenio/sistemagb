@@ -1,4 +1,4 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -25,10 +25,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sistemagb.domain.role.Role;
+import sistemagb.jwt.role.Role;
 
 @Table(name = "usuarios")
-@Entity(name = "Usuario")
+@Entity
 @Getter
 @Data
 @NoArgsConstructor

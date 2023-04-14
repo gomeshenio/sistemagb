@@ -1,11 +1,11 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sistemagb.domain.role.Role;
+import sistemagb.jwt.role.Role;
 
 @Data
 @AllArgsConstructor

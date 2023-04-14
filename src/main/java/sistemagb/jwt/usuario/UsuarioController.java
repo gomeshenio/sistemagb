@@ -1,4 +1,4 @@
-package sistemagb.domain.usuario;
+package sistemagb.jwt.usuario;
 
 import java.util.List;
 
@@ -40,6 +40,7 @@ public class UsuarioController {
 		return usuarioRepository.buscarUsuarios(username, nome, email, ativo);
 	}
 	
+	//String username, String nome, String email, Boolean ativo
 	
 	@GetMapping(path = "/{username}")
 	@RolesAllowed({"ROLE_ADMIN"})
@@ -65,5 +66,9 @@ public class UsuarioController {
         usuarioRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
+    
+
+//  Using generated security password: 4c8281df-2ba1-4ef5-92d2-d64bb099ed0f
+//  This generated password is for development use only. Your security configuration must be updated before running your application in production.
 	
 }
