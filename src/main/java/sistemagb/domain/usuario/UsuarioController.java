@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 
 @RestController
@@ -20,34 +21,41 @@ public class UsuarioController {
 	
 	private UsuarioRepository usuarioRepository;
 	private UsuarioService usuarioService;
+	private UsuarioRepositoryImpl usuarioRepositoryImpl;
 	
-	public UsuarioController(UsuarioRepository usuarioRepository, UsuarioService usuarioService) {
+	public UsuarioController(UsuarioRepository usuarioRepository, UsuarioService usuarioService, 
+			UsuarioRepositoryImpl usuarioRepositoryImpl) {
 		this.usuarioRepository = usuarioRepository;
 		this.usuarioService = usuarioService;
+		this.usuarioRepositoryImpl = usuarioRepositoryImpl;
 	}
 	
 	@GetMapping
-//	@RollesAllowed({"ROLE_ADMIN"})
-	public List<Usuario> listar(){
-		return usuarioRepository.findAll();
+	@RolesAllowed({"ROLE_ADMIN"})
+	public List<UsuarioDTO> listar(){
+		return usuarioRepository.buscarUsuarios();
 	}
 	
 	@GetMapping(path = "/{username}")
+	@RolesAllowed({"ROLE_ADMIN"})
 	public Usuario buscarPorNome(@PathVariable String username) {
 		return usuarioRepository.findByUsername(username);
 	}
 	
 	@PostMapping
+	@RolesAllowed({"ROLE_ADMIN"})
 	public Usuario criar(@Valid @RequestBody UsuarioDTO usuarioDTO) {
 		return usuarioService.criar(usuarioDTO);
 	}
 	
 	@PutMapping(value = "/{id}")
+//	@RolesAllowed({"ROLE_ADMIN"})
 	public Usuario atualizar(@PathVariable("id") Long id, @RequestBody UsuarioDTO usuarioDTO) {
 		return usuarioService.atualizar(id, usuarioDTO);
 	}
 	
     @DeleteMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public ResponseEntity deleteClient(@PathVariable Long id) {
         usuarioRepository.deleteById(id);
         return ResponseEntity.ok().build();

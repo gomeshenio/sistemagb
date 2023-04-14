@@ -9,7 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,13 +40,14 @@ public class Usuario implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-    private String login;
+    private String nome;
+    @JsonIgnore
     private String password;
     private String email;
     private Boolean ativo;
     
     
-    @ManyToMany 
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable( 
         name = "usuarios_roles", 
         joinColumns = @JoinColumn(
@@ -53,7 +57,6 @@ public class Usuario implements UserDetails {
     private Set<Role> roles = new HashSet<>();
     
 
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNome())).collect(Collectors.toList());
     }
