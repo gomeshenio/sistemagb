@@ -21,7 +21,6 @@ public class ClienteDTO {
 	private String numero;
 	private String bairro;
 	private Long municipioId;
-	private Integer ufId;
 	private String cpf;
 	private String cnpj;
 	private Date dataNascimento;

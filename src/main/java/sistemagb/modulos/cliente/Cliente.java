@@ -2,6 +2,8 @@ package sistemagb.modulos.cliente;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,10 +53,6 @@ public class Cliente {
 	@JoinColumn(name = "id_municipio")
 	private Municipio municipio;
 
-	@ManyToOne
-	@JoinColumn(name = "id_uf")
-	private UF uf;
-	
 	@Column(name = "cpf", length = 200)
 	private String cpf;
 	

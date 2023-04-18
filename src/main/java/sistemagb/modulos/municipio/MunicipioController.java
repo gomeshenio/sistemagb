@@ -20,16 +20,16 @@ public class MunicipioController {
         this.municipioRepository = municipioRepository;
     }
 
-//    @GetMapping
-//    @RolesAllowed({"ROLE_ADMIN"})
-//    public List<Municipio> findAll() {
-//        return municipioRepository.findAll();
-//    }
-//
-//    @GetMapping(path = {"/uf/{ufId}"})
-//    @RolesAllowed({"ROLE_ADMIN"})
-//    public List<Municipio> buscarMunicipioPorUf(@PathVariable("ufId") Integer ufId) {
-//        return municipioRepository.buscarMunicipioPorUf(ufId);
-//    }
+    @GetMapping
+    @RolesAllowed({"ROLE_ADMIN"})
+    public List<Municipio> findAll() {
+        return municipioRepository.findAll();
+    }
+
+    @GetMapping(path = {"/uf/{ufId}"})
+    @RolesAllowed({"ROLE_ADMIN"})
+    public List<Municipio> buscarMunicipioPorUf(@PathVariable("ufId") Integer ufId) {
+        return municipioRepository.findByUf(ufId);
+    }
 
 }

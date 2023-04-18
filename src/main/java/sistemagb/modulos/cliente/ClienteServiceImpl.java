@@ -51,9 +51,9 @@ public class ClienteServiceImpl implements ClienteService{
 			cliente.setMunicipio(municipio);
 		}
 
-		if (clienteDTO.getUfId() != null) {
-			cliente.setUf(ufRepository.findById(clienteDTO.getUfId()).get());
-		}
+//		if (clienteDTO.getUfId() != null) {
+//			cliente.setUf(ufRepository.findById(clienteDTO.getUfId()).get());
+//		}
 		
 		cliente.setCpf(clienteDTO.getCpf());
 		cliente.setCnpj(clienteDTO.getCnpj());
@@ -76,9 +76,6 @@ public class ClienteServiceImpl implements ClienteService{
 			cliente.setMunicipio(municipio);
 		}
 
-		if (clienteDTO.getUfId() != null) {
-			cliente.setUf(ufRepository.findById(clienteDTO.getUfId()).get());
-		}
 		
 		cliente.setCpf(clienteDTO.getCpf());
 		cliente.setCnpj(clienteDTO.getCnpj());

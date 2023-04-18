@@ -6,6 +6,8 @@ import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +22,8 @@ import sistemagb.modulos.municipio.Municipio;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "id")
+@NamedQueries({ @NamedQuery(name = "findUFBySigla", query = "SELECT uf FROM UF uf WHERE uf.sigla = :sigla") })
 public class UF {
 
     @Id
@@ -37,4 +40,5 @@ public class UF {
 		Set<Municipio> municipios = new HashSet<Municipio>();
 		return municipios;
 	}
+	
 }
